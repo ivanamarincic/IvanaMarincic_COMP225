@@ -12,7 +12,7 @@ public class VortexView extends GLSurfaceView {
     
     public VortexView(Context context) {
         super(context);
-        _renderer = new VortexRenderer();
+        _renderer = new VortexRenderer(context);
         setRenderer(_renderer);
     }
     
