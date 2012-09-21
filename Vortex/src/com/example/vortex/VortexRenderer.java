@@ -40,6 +40,11 @@ public class VortexRenderer implements GLSurfaceView.Renderer {
     private float _xAngle;
     private float _yAngle;
     
+
+    private float _red = 0.9f;
+    private float _green = 0.2f;
+    private float _blue = 0.2f;
+    
     VortexRenderer(Context context) {
         this.context = context;
      }
@@ -69,8 +74,8 @@ public class VortexRenderer implements GLSurfaceView.Renderer {
 //        gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_DIFFUSE, lightDiffuse, 0);
 //        gl.glLightfv(GL10.GL_LIGHT0, GL10.GL_POSITION, lightPos, 0);
 //    
-        //gl.glEnable(GL10.GL_DEPTH_TEST);
-        
+//        gl.glEnable(GL10.GL_DEPTH_TEST);
+//        
         
         
         Bitmap b = BitmapFactory.decodeResource(context.getResources(), R.drawable.pyramid_texture); 
@@ -114,7 +119,7 @@ public class VortexRenderer implements GLSurfaceView.Renderer {
     @Override
     public void onDrawFrame(GL10 gl) {
         // define the color we want to be displayed as the "clipping wall"
-        gl.glClearColor(0f, 0f, 0f, 1.0f);
+        gl.glClearColor(_red, _green, _blue, 1.0f);
         
         // reset the matrix - good to fix the rotation to a static angle
         gl.glLoadIdentity();
@@ -134,6 +139,11 @@ public class VortexRenderer implements GLSurfaceView.Renderer {
         gl.glDrawElements(GL10.GL_TRIANGLES, _nrOfVertices, GL10.GL_UNSIGNED_SHORT, _indexBuffer);
     }
     
+    public void setColor(float r, float g, float b){
+    	_red=r;
+    	_green=g;
+    	_blue=b;
+    }
     private void initTriangle() {
         float[] coords = {
                 -0.5f, -0.5f, 0.5f, // 0

@@ -26,6 +26,7 @@ public class VortexView extends GLSurfaceView {
             final float ydiff = (_y - event.getY());
             queueEvent(new Runnable() {
                 public void run() {
+                	_renderer.setColor(event.getX() / getWidth(), event.getY() / getHeight(), 1.0f);
                     _renderer.setXAngle(_renderer.getXAngle() + ydiff);
                     _renderer.setYAngle(_renderer.getYAngle() + xdiff);
                 }
